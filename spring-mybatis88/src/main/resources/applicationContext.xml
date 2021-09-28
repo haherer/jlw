@@ -35,10 +35,4 @@
     <bean id="studentServer" class="com.jlw.service.impl.StudentServiceImpl">
         <property name="studentDao" ref="studentDao"></property>
     </bean>
-
-    <bean id="goodsService" class="com.jlw.service.impl.GoodsServiceImpl">
-        <property name="goodsDao" ref="goodsDao"></property>
-        <property name="saleDao" ref="saleDao"></property>
-    </bean>
-
 </beans>

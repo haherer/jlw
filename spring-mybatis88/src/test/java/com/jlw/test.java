@@ -1,10 +1,7 @@
 package com.jlw;
 
 import com.jlw.dao.StudentDao;
-import com.jlw.domain.Goods;
-import com.jlw.domain.Sale;
 import com.jlw.domain.Student;
-import com.jlw.service.GoodsService;
 import com.jlw.service.StudentService;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
@@ -45,32 +42,10 @@ public class test {
         StudentService service = (StudentService) ctx.getBean("studentServer");
 
         Student student = new Student(null,"江",4,"iirr22@mm.com",new Date());
-        int nums = service.addStudent(student);
-        System.out.println(nums);
-
-    }
-
-    @Test
-    public void test04(){
-        String config = "applicationContext.xml";
-        ApplicationContext ctx = new ClassPathXmlApplicationContext(config);
-        GoodsService service = (GoodsService) ctx.getBean("goodsService");
-
-        Goods good = service.queryGood(1001);
-        System.out.println(good);
-
-        Sale sale = service.queryNums(1001);
-        System.out.println(sale);
-    }
-
-    @Test
-    public void test05(){
-        String config = "applicationContext.xml";
-        ApplicationContext ctx = new ClassPathXmlApplicationContext(config);
-        GoodsService service = (GoodsService) ctx.getBean("goodsService");
-
-//        service.setNums(1002);
-          service.buy(1002, 3000F);
+        for (int i = 0; i < 10; i++) {
+            int nums = service.addStudent(student);
+            System.out.println(nums);
+        }
     }
 
 }

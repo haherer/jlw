@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jlw.dao.SaleDao">
+    <select id="selectNums" resultType="com.jlw.domain.Sale">
+        select id,gid,nums from sale where gid=#{gid}
+    </select>
+
+    <update id="updateNums" >
+         update sale set nums=nums-1 where gid=#{gid}
+    </update>
+
+</mapper>
