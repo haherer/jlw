@@ -1,0 +1,204 @@
+[1mdiff --git a/spring-mybatis/src/main/java/com/jlw/dao/StudentDao.xml b/spring-mybatis/src/main/java/com/jlw/dao/StudentDao.xml[m
+[1mindex fa2aecc..018d3b4 100644[m
+[1m--- a/spring-mybatis/src/main/java/com/jlw/dao/StudentDao.xml[m
+[1m+++ b/spring-mybatis/src/main/java/com/jlw/dao/StudentDao.xml[m
+[36m@@ -4,7 +4,7 @@[m
+         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">[m
+ <mapper namespace="com.jlw.dao.StudentDao">[m
+     <insert id="insertStudent">[m
+[31m-        insert into student values(#{id},#{name},#{email},#{age})[m
+[32m+[m[32m        insert into student values(#{id},#{name},#{email},#{age},#{date})[m[41m[m
+     </insert>[m
+ [m
+     <select id="selectAll" resultType="com.jlw.domain.Student">[m
+[1mdiff --git a/spring-mybatis/src/main/java/com/jlw/domain/Student.java b/spring-mybatis/src/main/java/com/jlw/domain/Student.java[m
+[1mindex 84e9e93..02f0f0f 100644[m
+[1m--- a/spring-mybatis/src/main/java/com/jlw/domain/Student.java[m
+[1m+++ b/spring-mybatis/src/main/java/com/jlw/domain/Student.java[m
+[36m@@ -1,19 +1,22 @@[m
+ package com.jlw.domain;[m
+ [m
+[32m+[m[32mimport java.util.Date;[m[41m[m
+[32m+[m[41m[m
+ public class Student {[m
+     private Integer id;[m
+     private String name;[m
+     private Integer age;[m
+     private String email;[m
+[32m+[m[32m    private Date date;[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m    public Student() { }[m[41m[m
+ [m
+[31m-    public Student(Integer id, String name, Integer age, String email) {[m
+[32m+[m[32m    public Student(Integer id, String name, Integer age, String email, Date date) {[m[41m[m
+         this.id = id;[m
+         this.name = name;[m
+         this.age = age;[m
+         this.email = email;[m
+[31m-    }[m
+[31m-[m
+[31m-    public Student() {[m
+[32m+[m[32m        this.date = date;[m[41m[m
+     }[m
+ [m
+     public Integer getId() {[m
+[36m@@ -48,6 +51,14 @@[m [mpublic class Student {[m
+         this.email = email;[m
+     }[m
+ [m
+[32m+[m[32m    public Date getDate() {[m[41m[m
+[32m+[m[32m        return date;[m[41m[m
+[32m+[m[32m    }[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m    public void setDate(Date date) {[m[41m[m
+[32m+[m[32m        this.date = date;[m[41m[m
+[32m+[m[32m    }[m[41m[m
+[32m+[m[41m[m
+     @Override[m
+     public String toString() {[m
+         return "Student{" +[m
+[36m@@ -55,7 +66,7 @@[m [mpublic class Student {[m
+                 ", name='" + name + '\'' +[m
+                 ", age=" + age +[m
+                 ", email='" + email + '\'' +[m
+[32m+[m[32m                ", date=" + date +[m[41m[m
+                 '}';[m
+     }[m
+[31m-[m
+ }[m
+[1mdiff --git a/spring-mybatis/src/main/java/com/jlw/service/impl/StudentServiceImpl.java b/spring-mybatis/src/main/java/com/jlw/service/impl/StudentServiceImpl.java[m
+[1mindex bab88b4..be55362 100644[m
+[1m--- a/spring-mybatis/src/main/java/com/jlw/service/impl/StudentServiceImpl.java[m
+[1m+++ b/spring-mybatis/src/main/java/com/jlw/service/impl/StudentServiceImpl.java[m
+[36m@@ -8,11 +8,12 @@[m [mimport java.util.List;[m
+ [m
+ public class StudentServiceImpl implements StudentService {[m
+ [m
+[32m+[m[32m    private StudentDao studentDao;[m[41m[m
+[32m+[m[41m[m
+     public void setStudentDao(StudentDao studentDao) {[m
+         this.studentDao = studentDao;[m
+     }[m
+ [m
+[31m-    private StudentDao studentDao;[m
+ [m
+     @Override[m
+     public int addStudent(Student student) {[m
+[1mdiff --git a/spring-mybatis/src/main/resources/applicationContext.xml b/spring-mybatis/src/main/resources/applicationContext.xml[m
+[1mindex c003d81..2b43725 100644[m
+[1m--- a/spring-mybatis/src/main/resources/applicationContext.xml[m
+[1m+++ b/spring-mybatis/src/main/resources/applicationContext.xml[m
+[36m@@ -31,6 +31,7 @@[m
+         <property name="basePackage" value="com.jlw.dao"></property>[m
+     </bean>[m
+ [m
+[32m+[m[32m    <!--申明service-->[m[41m[m
+     <bean id="studentServer" class="com.jlw.service.impl.StudentServiceImpl">[m
+         <property name="studentDao" ref="studentDao"></property>[m
+     </bean>[m
+[1mdiff --git a/spring-mybatis/src/test/java/com/jlw/test.java b/spring-mybatis/src/test/java/com/jlw/test.java[m
+[1mindex ae22c14..ceb8f71 100644[m
+[1m--- a/spring-mybatis/src/test/java/com/jlw/test.java[m
+[1m+++ b/spring-mybatis/src/test/java/com/jlw/test.java[m
+[36m@@ -7,7 +7,9 @@[m [mimport org.junit.Test;[m
+ import org.springframework.context.ApplicationContext;[m
+ import org.springframework.context.support.ClassPathXmlApplicationContext;[m
+ [m
+[32m+[m[32mimport java.util.Date;[m[41m[m
+ import java.util.List;[m
+[32m+[m[32mimport java.util.Random;[m[41m[m
+ [m
+ public class test {[m
+     @Test[m
+[36m@@ -28,7 +30,7 @@[m [mpublic class test {[m
+         ApplicationContext ctx = new ClassPathXmlApplicationContext(config);[m
+         StudentDao dao = (StudentDao) ctx.getBean("studentDao");[m
+ [m
+[31m-        Student student = new Student(null,"江",99,"iirr22@mm.com");[m
+[32m+[m[32m        Student student = new Student(null,"江",99,"iirr22@mm.com",new Date());[m[41m[m
+         int nums = dao.insertStudent(student);[m
+         System.out.println(nums);[m
+         }[m
+[36m@@ -39,8 +41,11 @@[m [mpublic class test {[m
+         ApplicationContext ctx = new ClassPathXmlApplicationContext(config);[m
+         StudentService service = (StudentService) ctx.getBean("studentServer");[m
+ [m
+[31m-        Student student = new Student(null,"江",99,"iirr22@mm.com");[m
+[31m-        int nums = service.addStudent(student);[m
+[31m-        System.out.println(nums);[m
+[32m+[m[32m        Student student = new Student(null,"江",4,"iirr22@mm.com",new Date());[m[41m[m
+[32m+[m[32m        for (int i = 0; i < 9999; i++) {[m[41m[m
+[32m+[m[32m            int nums = service.addStudent(student);[m[41m[m
+[32m+[m[32m            System.out.println(nums);[m[41m[m
+[32m+[m[32m        }[m[41m[m
+     }[m
+[32m+[m[41m[m
+ }[m
+[1mdiff --git a/spring-mybatis/target/classes/applicationContext.xml b/spring-mybatis/target/classes/applicationContext.xml[m
+[1mindex 5e8a9f5..2b43725 100644[m
+[1m--- a/spring-mybatis/target/classes/applicationContext.xml[m
+[1m+++ b/spring-mybatis/target/classes/applicationContext.xml[m
+[36m@@ -3,9 +3,11 @@[m
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"[m
+        xmlns:context="http://www.springframework.org/schema/context"[m
+        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">[m
+[31m-<!--读取jdbc.properties配置文件-->[m
+[32m+[m[41m[m
+[32m+[m[32m    <!--读取jdbc.properties配置文件-->[m[41m[m
+     <context:property-placeholder location="classpath:jdbc.properties"></context:property-placeholder>[m
+[31m-<!--连接池-->[m
+[32m+[m[41m[m
+[32m+[m[32m    <!--连接池-->[m[41m[m
+     <bean id="myDataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">[m
+         <property name="url" value="${jdbc.url}" />[m
+         <property name="username" value="${jdbc.username}" />[m
+[36m@@ -13,7 +15,7 @@[m
+         <property name="maxActive" value="${jdbc.maxActive}" />[m
+     </bean>[m
+ [m
+[31m-<!--申明SqlSessionFactoryBean类，创建SqlSessionFactory-->[m
+[32m+[m[32m    <!--申明SqlSessionFactoryBean类，创建SqlSessionFactory-->[m[41m[m
+     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">[m
+         <!--将连接池赋值给dataSource属性-->[m
+         <property name="dataSource" ref="myDataSource"></property>[m
+[36m@@ -21,14 +23,15 @@[m
+         <property name="configLocation" value="classpath:mybatis.xml"></property>[m
+     </bean>[m
+ [m
+[31m-<!--创建dao对象-->[m
+[32m+[m[32m    <!--创建dao对象-->[m[41m[m
+     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">[m
+[31m-<!--指定SqlSessionFactory ID-->[m
+[32m+[m[32m    <!--指定SqlSessionFactory ID-->[m[41m[m
+         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>[m
+[31m-<!--指定包名，dao接口所在的包名-->[m
+[32m+[m[32m    <!--指定包名，dao接口所在的包名-->[m[41m[m
+         <property name="basePackage" value="com.jlw.dao"></property>[m
+     </bean>[m
+ [m
+[32m+[m[32m    <!--申明service-->[m[41m[m
+     <bean id="studentServer" class="com.jlw.service.impl.StudentServiceImpl">[m
+         <property name="studentDao" ref="studentDao"></property>[m
+     </bean>[m
+[1mdiff --git a/spring-mybatis/target/classes/com/jlw/dao/StudentDao.xml b/spring-mybatis/target/classes/com/jlw/dao/StudentDao.xml[m
+[1mindex fa2aecc..018d3b4 100644[m
+[1m--- a/spring-mybatis/target/classes/com/jlw/dao/StudentDao.xml[m
+[1m+++ b/spring-mybatis/target/classes/com/jlw/dao/StudentDao.xml[m
+[36m@@ -4,7 +4,7 @@[m
+         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">[m
+ <mapper namespace="com.jlw.dao.StudentDao">[m
+     <insert id="insertStudent">[m
+[31m-        insert into student values(#{id},#{name},#{email},#{age})[m
+[32m+[m[32m        insert into student values(#{id},#{name},#{email},#{age},#{date})[m[41m[m
+     </insert>[m
+ [m
+     <select id="selectAll" resultType="com.jlw.domain.Student">[m
+[1mdiff --git a/spring-mybatis/target/classes/com/jlw/domain/Student.class b/spring-mybatis/target/classes/com/jlw/domain/Student.class[m
+[1mindex b3bc48e..def1c1d 100644[m
+Binary files a/spring-mybatis/target/classes/com/jlw/domain/Student.class and b/spring-mybatis/target/classes/com/jlw/domain/Student.class differ
+[1mdiff --git a/spring-mybatis/target/classes/com/jlw/service/impl/StudentServiceImpl.class b/spring-mybatis/target/classes/com/jlw/service/impl/StudentServiceImpl.class[m
+[1mindex 87c5bd8..71dd661 100644[m
+Binary files a/spring-mybatis/target/classes/com/jlw/service/impl/StudentServiceImpl.class and b/spring-mybatis/target/classes/com/jlw/service/impl/StudentServiceImpl.class differ
+[1mdiff --git a/spring-mybatis/target/test-classes/com/jlw/test.class b/spring-mybatis/target/test-classes/com/jlw/test.class[m
+[1mindex d29245b..9d4c386 100644[m
+Binary files a/spring-mybatis/target/test-classes/com/jlw/test.class and b/spring-mybatis/target/test-classes/com/jlw/test.class differ
