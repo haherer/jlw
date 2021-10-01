@@ -7,7 +7,9 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="aoptext" />
+        <module name="ssm-01" />
         <module name="spring-mybatis" />
+        <module name="ch01-springmvc" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
