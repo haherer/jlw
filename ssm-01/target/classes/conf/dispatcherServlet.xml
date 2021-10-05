@@ -15,7 +15,7 @@
 <!--声明拦截器-->
     <mvc:interceptors>
         <mvc:interceptor><!-- 一个interceptor对应一个拦截器-->
-            <!--指定拦截的请求地址path：url地址，可以使用通配符-->
+            <!--指定拦截的请求地址path：url地址，可以使用通配符（/**代表所有请求）-->
             <mvc:mapping path="/student/**"/>
             <!--声明拦截器对象-->
             <bean class="com.jlw.handler.interceptor.MyInterceptor"/>
@@ -25,4 +25,5 @@
     <context:component-scan base-package="com.jlw.handler"/>
 <!--注解驱动-->
     <mvc:annotation-driven/>
+
 </beans>

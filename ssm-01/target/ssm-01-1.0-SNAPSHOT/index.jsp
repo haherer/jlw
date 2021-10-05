@@ -12,7 +12,7 @@
         <input type="reset" value="重置">
     </form>
     <br>
-    <form action="student/findStudent.do" method="post">
+    <form action="student/findStudent.do" method="get">
         <input type="submit" value="查询所有">
     </form>
 </body>

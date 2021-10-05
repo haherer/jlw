@@ -2,17 +2,14 @@ package com.jlw.controller;
 
 import com.jlw.domain.Student;
 import com.jlw.service.StudentService;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
-@Controller
+@RestController
 @RequestMapping("/student")
 public class StudentController {
     @Resource
@@ -38,24 +35,32 @@ public class StudentController {
 //        return mv;
 //    }
 //=================================================================
-    @RequestMapping(value = "/addStudent.do",method = RequestMethod.POST)
-    public ModelAndView addStudent(Student student) throws Exception {
-        ModelAndView mv = new ModelAndView();
-        String tips = "注册失败";
+    @PostMapping(value = "/addStudent.do")
+//    @ResponseBody//转jackson
+    public Map addStudent(Student student) throws Exception {
+        HashMap hm = new HashMap();
         int nums = service.addStudent(student);
         if (nums>0) {
             //注册成功
-            tips = "学生【" + student.getName().toString() + "】注册成功";
+            hm.put("code",1);
+            hm.put("msg","注册成功");
         }
-        mv.addObject("tips",tips);
-        mv.setViewName("result");
-        return mv;
+        return hm;
     }
 
-    @RequestMapping(value = "/findStudent.do",method = RequestMethod.POST)
-    @ResponseBody//转jackson
-    public List<Student> findStudent(Student student){
+    @GetMapping(value = "/findStudent.do")
+//    @ResponseBody//转jackson
+    public Map findStudent(){
+        HashMap stuMap = new HashMap();
+
         ArrayList<Student> students = (ArrayList<Student>) service.findStudents();
-        return students;
+        HashMap dataMap = new HashMap();
+        dataMap.put("list",students);
+        System.out.println(dataMap);
+
+        stuMap.put("data",dataMap);
+        stuMap.put("msg","success");
+        stuMap.put("code",1);
+        return stuMap;
     }
 }

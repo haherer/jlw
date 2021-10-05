@@ -4,6 +4,6 @@
     <title>Title</title>
 </head>
 <body>
-    <h1>注册结果：${tips}</h1>
+    <h1>注册结果：${msg}</h1>
 </body>
 </html>
