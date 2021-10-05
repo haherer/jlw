@@ -1,0 +1,52 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /nicholas
+#设置字符编码
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+#设置数据库配置
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/ssm
+    username: root
+    password: root
+    #druid配置
+    druid:
+      initial-size: 5
+      min-idle: 5
+      max-active: 20
+      max-wait: 60000
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: SELECT 1 FROM DUAL
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: true
+      filters: wall
+      max-pool-prepared-statement-per-connection-size: 20
+      use-global-data-source-stat: true
+      connection-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+
+#  mvc: 开启内容协商，默认返回XML，请求时通过format=json 设置参数返回json
+#    contentnegotiation:
+#      favor-parameter: true
+
+#mybatis配置
+mybatis:
+  #配置domain别名
+  type-aliases-package: com.nicholas.domain
+  #配置mapper路径
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  #开启驼峰名规则
+  configuration:
+    map-underscore-to-camel-case: true
+
+jiang.name: 江立伟
+jiang.age: 3
+
+#配置报告 debug: true

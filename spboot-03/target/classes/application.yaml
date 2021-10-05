@@ -1,0 +1,15 @@
+#设置静态资源前置访问路径
+spring:
+  mvc:
+    static-path-pattern: /res/**
+    contentnegotiation:
+      favor-parameter: true #ture 开启请求参数内容协商模式，客户端请求时，携带format，参数json或xml
+  datasource: #数据源
+    url: jdbc:mysql://localhost:3306/ssm
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+  jdbc: #超时时间（秒）
+    template:
+      query-timeout: 3
+
