@@ -13,9 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 public class FindInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        String account = request.getParameter("account");
-        String token = request.getHeader("token");
-        String attributeToken = (String) request.getSession().getAttribute(account);
+        String account = request.getParameter("account");//请求中获取account
+        String token = request.getHeader("token");//请求头中获取token
+        String attributeToken = (String) request.getSession().getAttribute(account);//session中获取token
 
         if (null == account || !StringCheck.userName(account)){
             ResultController resultController = new ResultController("1", "账号不能为空或账号格式错误");
@@ -31,6 +31,7 @@ public class FindInterceptor implements HandlerInterceptor {
             log.info("token不能为空");
             return false;
         }
+        //判断请求头中的token与session中的token是否一致
         if(null == attributeToken || !token.equals(attributeToken)){
             ResultController resultController = new ResultController("1", "token失效，请重新登录");
             response.setContentType("application/json;charset=utf-8");

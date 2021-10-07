@@ -1,7 +1,5 @@
 package com.nicholas.config;
 
-import com.nicholas.interceptor.FindInterceptor;
-import com.nicholas.interceptor.ServiceInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;

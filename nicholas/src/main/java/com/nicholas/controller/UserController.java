@@ -63,7 +63,7 @@ public class UserController {
                 resultController.setMsg("登录成功");
                 String token = myBCrypt.encode(account);
                 request.getSession().setAttribute(account,token);//account为KEY，放入session
-                response.addHeader("token",token);
+                response.addHeader("token",token);//响应头中加入 token
                 log.info("登录成功，token：" + token);
                 return resultController;
             }
