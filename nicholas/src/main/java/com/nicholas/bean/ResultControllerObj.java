@@ -2,6 +2,7 @@ package com.nicholas.bean;
 
 import org.springframework.stereotype.Component;
 
+//带obj的返回对象
 @Component
 public class ResultControllerObj {
     private String code;

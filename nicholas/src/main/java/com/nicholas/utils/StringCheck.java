@@ -2,6 +2,7 @@ package com.nicholas.utils;
 
 import java.util.regex.Pattern;
 
+//字符串验证规则
 public class StringCheck {
 
     //用户名：由字母数字下划线组成且开头必须是字母，不能超过16位

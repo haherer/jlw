@@ -14,6 +14,7 @@ import org.apache.http.util.EntityUtils;
 import java.io.IOException;
 import java.util.ArrayList;
 
+//httpClient调用接口获取数据，返回json
 public class HttpToJson {
 
     public static JSONObject get(String url) throws IOException {
