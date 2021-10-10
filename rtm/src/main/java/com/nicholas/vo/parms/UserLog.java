@@ -1,12 +1,10 @@
 package com.nicholas.vo.parms;
 
-public class UserReg {
+public class UserLog {
 
     private String account;
 
     private String password;
-
-    private String phone;
 
     public String getAccount() {
         return account;
@@ -24,20 +22,11 @@ public class UserReg {
         this.password = password;
     }
 
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public UserReg(String account, String password, String phone) {
+    public UserLog(String account, String password) {
         this.account = account;
         this.password = password;
-        this.phone = phone;
     }
 
-    public UserReg() {
+    public UserLog() {
     }
 }

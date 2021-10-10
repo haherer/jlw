@@ -8,10 +8,10 @@ public class Result {
 
     private String msg;
 
-    private Object obj;
+    private Object data;
 
-    public static Result success(Object obj){
-        return  new Result(true , 200 ,"success" , obj);
+    public static Result success(Object data){
+        return  new Result(true , 200 ,"success" , data);
     }
 
     public static Result fail(int code , String msg){
@@ -24,7 +24,7 @@ public class Result {
                 "success=" + success +
                 ", code=" + code +
                 ", msg='" + msg + '\'' +
-                ", obj=" + obj +
+                ", data=" + data +
                 '}';
     }
 
@@ -52,19 +52,19 @@ public class Result {
         this.msg = msg;
     }
 
-    public Object getObj() {
-        return obj;
+    public Object getData() {
+        return data;
     }
 
-    public void setObj(Object obj) {
-        this.obj = obj;
+    public void setData(Object data) {
+        this.data = data;
     }
 
-    public Result(boolean success, int code, String msg, Object obj) {
+    public Result(boolean success, int code, String msg, Object data) {
         this.success = success;
         this.code = code;
         this.msg = msg;
-        this.obj = obj;
+        this.data = data;
     }
 
     public Result() {

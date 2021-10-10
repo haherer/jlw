@@ -1,5 +1,7 @@
 package com.nicholas.domain;
 
+import org.springframework.stereotype.Component;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -29,7 +31,7 @@ public class Data implements Serializable {
 
     private Long hotValue;//热度值
 
-    private Integer comment;//下级评论编号
+    private String comment;//下级评论编号
 
     private static final long serialVersionUID = 1L;
 
@@ -129,11 +131,11 @@ public class Data implements Serializable {
         this.hotValue = hotValue;
     }
 
-    public Integer getComment() {
+    public String getComment() {
         return comment;
     }
 
-    public void setComment(Integer comment) {
+    public void setComment(String comment) {
         this.comment = comment;
     }
 }

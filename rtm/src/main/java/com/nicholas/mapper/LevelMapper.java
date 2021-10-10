@@ -16,6 +16,8 @@ public interface LevelMapper {
 
     Level selectByPrimaryKey(Integer id);
 
+    Level selectByPrimaryLevelId(Integer levelId);
+
     int updateByPrimaryKeySelective(Level record);
 
     int updateByPrimaryKey(Level record);

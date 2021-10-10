@@ -15,7 +15,7 @@
     <result column="state" jdbcType="INTEGER" property="state" />
     <result column="sort" jdbcType="INTEGER" property="sort" />
     <result column="hot_value" jdbcType="BIGINT" property="hotValue" />
-    <result column="comment" jdbcType="INTEGER" property="comment" />
+    <result column="comment" jdbcType="VARCHAR" property="comment" />
   </resultMap>
 
   <sql id="Base_Column_List">
@@ -28,6 +28,14 @@
     <include refid="Base_Column_List" />
     from data
     where id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectAllData" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from data
+    where state = 0
+    order by sort desc , creation_time desc
   </select>
 
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">

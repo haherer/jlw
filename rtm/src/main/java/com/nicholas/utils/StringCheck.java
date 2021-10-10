@@ -7,7 +7,7 @@ public class StringCheck {
 
     //用户名：由字母数字下划线组成且开头必须是字母，不能超过16位
     public static Boolean userName(String userName){
-        Pattern compile = Pattern.compile("[a-zA-Z]{1}[a-zA-Z0-9_]{6,15}");
+        Pattern compile = Pattern.compile("[a-zA-Z]{1}[a-zA-Z0-9_]{6,16}");
         return compile.matcher(userName).matches();
     }
     //密码：字母或数字构成，不能超过6~16位

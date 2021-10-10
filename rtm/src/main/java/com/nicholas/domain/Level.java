@@ -45,4 +45,14 @@ public class Level implements Serializable {
     public void setValue(Long value) {
         this.value = value;
     }
+
+    @Override
+    public String toString() {
+        return "Level{" +
+                "id=" + id +
+                ", levelId=" + levelId +
+                ", levelName='" + levelName + '\'' +
+                ", value=" + value +
+                '}';
+    }
 }

@@ -4,6 +4,8 @@ import com.nicholas.domain.Data;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 @Mapper
 public interface DataMapper {
@@ -15,6 +17,8 @@ public interface DataMapper {
     int insertSelective(Data record);
 
     Data selectByPrimaryKey(Integer id);
+
+    List<Data> selectAllData();
 
     int updateByPrimaryKeySelective(Data record);
 

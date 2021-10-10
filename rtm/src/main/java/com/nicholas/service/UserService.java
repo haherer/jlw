@@ -1,7 +1,9 @@
 package com.nicholas.service;
 
+
 import com.nicholas.domain.User;
 import com.nicholas.vo.Result;
+import com.nicholas.vo.parms.UserLog;
 import com.nicholas.vo.parms.UserReg;
 
 public interface UserService {
@@ -10,6 +12,11 @@ public interface UserService {
 
     Boolean isAccount(String account);
 
-    Boolean isPhone(Integer phone);
+    Boolean isPhone(String phone);
 
+    User findAccount(String account);
+
+    User findUid(Integer uid);
+
+    User login(UserLog userLog);
 }

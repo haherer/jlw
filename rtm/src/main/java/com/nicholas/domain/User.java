@@ -1,5 +1,6 @@
 package com.nicholas.domain;
 
+import io.swagger.models.auth.In;
 import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
@@ -18,11 +19,11 @@ public class User implements Serializable {
 
     private Date registerDate;//注册时间
 
-    private Date lastloginDate;//最后登录时间
+    private Date lastloginDate = null;//最后登录时间
 
     private Integer accountStatus = 0;//账号状态，0开启，1冻结
 
-    private Integer phoneNumber;//手机号
+    private String phoneNumber;//手机号
 
     private Integer userLevel = 1;//用户级别
 
@@ -86,11 +87,11 @@ public class User implements Serializable {
         this.accountStatus = accountStatus;
     }
 
-    public Integer getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(Integer phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 

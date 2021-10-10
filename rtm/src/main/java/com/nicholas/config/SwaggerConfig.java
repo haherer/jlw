@@ -14,8 +14,7 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Configuration
 @EnableSwagger2 //开启swagger
@@ -38,7 +37,6 @@ public class SwaggerConfig {
                 .paths(PathSelectors.any()).build()
                 .globalOperationParameters(pars);
     }
-
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
