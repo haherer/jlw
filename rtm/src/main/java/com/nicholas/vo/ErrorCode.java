@@ -20,7 +20,6 @@ public enum ErrorCode {
     RELEASE_FAIL(115,"发布失败");
 
 
-
     private int code;
     private String msg;
 

@@ -13,13 +13,13 @@ public class InterceptorConfig implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new UserRegInterceptor())//user路径拦截器
+        registry.addInterceptor(new UserRegInterceptor())
                 .addPathPatterns("/user/register")
                 .excludePathPatterns();
-        registry.addInterceptor(new UserLoginInterceptor())//user路径拦截器
+        registry.addInterceptor(new UserLoginInterceptor())
                 .addPathPatterns("/user/login")
                 .excludePathPatterns();
-        registry.addInterceptor(new QueryInterceptor())//user路径拦截器
+        registry.addInterceptor(new QueryInterceptor())
                 .addPathPatterns("/query/user" , "/release/**")
                 .excludePathPatterns();
     }

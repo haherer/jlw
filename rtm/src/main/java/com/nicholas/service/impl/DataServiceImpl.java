@@ -4,7 +4,6 @@ import com.nicholas.domain.Data;
 import com.nicholas.mapper.DataMapper;
 import com.nicholas.service.DataService;
 import com.nicholas.utils.OrderIdRandom;
-import com.nicholas.vo.Result;
 import com.nicholas.vo.UserQueryVo;
 import com.nicholas.vo.parms.Release;
 import lombok.extern.slf4j.Slf4j;

@@ -3,7 +3,6 @@ package com.nicholas.mapper;
 import com.nicholas.domain.Data;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
-
 import java.util.List;
 
 @Repository
