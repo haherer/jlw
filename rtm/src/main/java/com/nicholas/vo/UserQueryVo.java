@@ -11,12 +11,17 @@ public class UserQueryVo {
     private String phone;
     private Level userLevel;
     private Long levelValue;
+    private String name;
+    private String nickName;
 
-    public UserQueryVo() {
-    }
-
-    public Integer getUid() {
-        return uid;
+    public UserQueryVo(Integer uid, String account, String phone, Level userLevel, Long levelValue, String name, String nickName) {
+        this.uid = uid;
+        this.account = account;
+        this.phone = phone;
+        this.userLevel = userLevel;
+        this.levelValue = levelValue;
+        this.name = name;
+        this.nickName = nickName;
     }
 
     @Override
@@ -27,8 +32,34 @@ public class UserQueryVo {
                 ", phone='" + phone + '\'' +
                 ", userLevel=" + userLevel +
                 ", levelValue=" + levelValue +
+                ", name='" + name + '\'' +
+                ", nickName='" + nickName + '\'' +
                 '}';
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getNickName() {
+        return nickName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
+    }
+
+    public UserQueryVo() {
+    }
+
+    public Integer getUid() {
+        return uid;
+    }
+
 
     public void setUid(Integer uid) {
         this.uid = uid;
@@ -66,11 +97,4 @@ public class UserQueryVo {
         this.levelValue = levelValue;
     }
 
-    public UserQueryVo(Integer uid, String account, String phone, Level userLevel, Long levelValue) {
-        this.uid = uid;
-        this.account = account;
-        this.phone = phone;
-        this.userLevel = userLevel;
-        this.levelValue = levelValue;
-    }
 }

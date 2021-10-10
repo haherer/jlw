@@ -13,11 +13,13 @@
     <result column="phone_number" jdbcType="VARCHAR" property="phoneNumber" />
     <result column="user_level" jdbcType="INTEGER" property="userLevel" />
     <result column="level_value" jdbcType="BIGINT" property="levelValue" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="nickname" jdbcType="VARCHAR" property="nickName" />
   </resultMap>
 
   <sql id="Base_Column_List">
     id, uid, account, password, register_date, lastlogin_date, account_status, phone_number, 
-    user_level, level_value
+    user_level, level_value ,name ,nickname
   </sql>
 
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">

@@ -16,11 +16,12 @@
     <result column="sort" jdbcType="INTEGER" property="sort" />
     <result column="hot_value" jdbcType="BIGINT" property="hotValue" />
     <result column="comment" jdbcType="VARCHAR" property="comment" />
+    <result column="accuracy" jdbcType="DOUBLE" property="accuracy" />
   </resultMap>
 
   <sql id="Base_Column_List">
     id, uid, creation_time, longitude, latitude, poi, content, img_url, video_url, state, 
-    sort, hot_value, comment
+    sort, hot_value, comment, accuracy
   </sql>
 
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
@@ -98,6 +99,9 @@
       <if test="comment != null">
         comment,
       </if>
+      <if test="comment != null">
+        accuracy,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -138,6 +142,9 @@
       </if>
       <if test="comment != null">
         #{comment,jdbcType=INTEGER},
+      </if>
+      <if test="accuracy != null">
+        #{accuracy,jdbcType=DOUBLE},
       </if>
     </trim>
   </insert>

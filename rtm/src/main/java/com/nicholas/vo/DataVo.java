@@ -14,6 +14,11 @@ public class DataVo {
     private String videoUrl;
     private Long hotValue;
     private String comment;
+    private Double accuracy;
+
+    public Double getAccuracy() {
+        return accuracy;
+    }
 
     @Override
     public String toString() {
@@ -27,8 +32,27 @@ public class DataVo {
                 ", imgUrl='" + imgUrl + '\'' +
                 ", videoUrl='" + videoUrl + '\'' +
                 ", hotValue=" + hotValue +
-                ", comment=" + comment +
+                ", comment='" + comment + '\'' +
+                ", accuracy=" + accuracy +
                 '}';
+    }
+
+    public void setAccuracy(Double accuracy) {
+        this.accuracy = accuracy;
+    }
+
+    public DataVo(Integer uid, Date creationTime, BigDecimal longitude, BigDecimal latitude, String poi, String content, String imgUrl, String videoUrl, Long hotValue, String comment, Double accuracy) {
+        this.uid = uid;
+        this.creationTime = creationTime;
+        this.longitude = longitude;
+        this.latitude = latitude;
+        this.poi = poi;
+        this.content = content;
+        this.imgUrl = imgUrl;
+        this.videoUrl = videoUrl;
+        this.hotValue = hotValue;
+        this.comment = comment;
+        this.accuracy = accuracy;
     }
 
     public Integer getUid() {
@@ -111,18 +135,6 @@ public class DataVo {
         this.comment = comment;
     }
 
-    public DataVo(Integer uid, Date creationTime, BigDecimal longitude, BigDecimal latitude, String poi, String content, String imgUrl, String videoUrl, Long hotValue, String comment) {
-        this.uid = uid;
-        this.creationTime = creationTime;
-        this.longitude = longitude;
-        this.latitude = latitude;
-        this.poi = poi;
-        this.content = content;
-        this.imgUrl = imgUrl;
-        this.videoUrl = videoUrl;
-        this.hotValue = hotValue;
-        this.comment = comment;
-    }
 
     public DataVo() {
     }

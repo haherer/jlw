@@ -1,6 +1,5 @@
 package com.nicholas.domain;
 
-import io.swagger.models.auth.In;
 import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
@@ -28,6 +27,26 @@ public class User implements Serializable {
     private Integer userLevel = 1;//用户级别
 
     private Long levelValue = 0L;//经验值
+
+    private String name;//用户姓名
+
+    public String getNickName() {
+        return nickName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
+    }
+
+    private String nickName;//昵称
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     private static final long serialVersionUID = 1L;
 

@@ -1,6 +1,5 @@
 package com.nicholas.vo.parms;
 
-import java.math.BigDecimal;
 
 public class Release {
     private Double longitude;

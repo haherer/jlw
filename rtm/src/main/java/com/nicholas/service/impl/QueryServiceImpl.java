@@ -52,6 +52,8 @@ public class QueryServiceImpl implements QueryService {
         userQueryVo.setPhone(user.getPhoneNumber());
         userQueryVo.setLevelValue(user.getLevelValue());
         userQueryVo.setUserLevel(queryLevelByLevelId(user.getUserLevel()));
+        userQueryVo.setName(user.getName());
+        userQueryVo.setNickName(user.getNickName());
         return userQueryVo;
     }
 
@@ -84,6 +86,7 @@ public class QueryServiceImpl implements QueryService {
                 dataVo.setVideoUrl(data.getVideoUrl());
                 dataVo.setHotValue(data.getHotValue());
                 dataVo.setComment(data.getComment());
+                dataVo.setAccuracy(data.getAccuracy());
                 dataVos.add(dataVo);
             }
             log.info("遍历完成");

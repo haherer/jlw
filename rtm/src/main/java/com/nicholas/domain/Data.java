@@ -33,7 +33,18 @@ public class Data implements Serializable {
 
     private String comment;//下级评论编号
 
+    private Double accuracy;//可信度
+
     private static final long serialVersionUID = 1L;
+
+
+    public Double getAccuracy() {
+        return accuracy;
+    }
+
+    public void setAccuracy(Double accuracy) {
+        this.accuracy = accuracy;
+    }
 
     public Integer getId() {
         return id;
