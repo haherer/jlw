@@ -50,3 +50,5 @@ mybatis:
 
 #发布成功后默认增加的经验值
 addEmpValue: 50
+
+

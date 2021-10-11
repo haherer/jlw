@@ -17,11 +17,14 @@
     <result column="hot_value" jdbcType="BIGINT" property="hotValue" />
     <result column="accuracy" jdbcType="DOUBLE" property="accuracy" />
     <result column="data_uid" jdbcType="VARCHAR" property="dataUid" />
+    <result column="true_sum" jdbcType="BIGINT" property="trueSum" />
+    <result column="false_sum" jdbcType="BIGINT" property="falseSum" />
+    <result column="comment_sum" jdbcType="BIGINT" property="commentSum" />
   </resultMap>
 
   <sql id="Base_Column_List">
     id, uid, creation_time, longitude, latitude, poi, content, img_url, video_url, state, 
-    sort, hot_value, accuracy ,data_uid
+    sort, hot_value, accuracy ,data_uid ,true_sum ,false_sum ,comment_sum
   </sql>
 
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
@@ -56,12 +59,13 @@
       longitude, latitude, poi, 
       content, img_url, video_url, 
       state, sort, hot_value, 
-      accuracy ,data_uid)
+      accuracy ,data_uid,true_sum ,false_sum ,comment_sum)
     values (#{id,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{creationTime,jdbcType=TIMESTAMP}, 
       #{longitude,jdbcType=DECIMAL}, #{latitude,jdbcType=DECIMAL}, #{poi,jdbcType=VARCHAR}, 
       #{content,jdbcType=VARCHAR}, #{imgUrl,jdbcType=VARCHAR}, #{videoUrl,jdbcType=VARCHAR}, 
       #{state,jdbcType=INTEGER}, #{sort,jdbcType=INTEGER}, #{hotValue,jdbcType=BIGINT}, 
-      #{accuracy,jdbcType=DOUBLE} ,#{dataUid,jdbcType=INTEGER})
+      #{accuracy,jdbcType=DOUBLE} ,#{dataUid,jdbcType=INTEGER} ,#{trueSum,jdbcType=VARCHAR},
+      #{falseSum,jdbcType=VARCHAR},#{commentSum,jdbcType=VARCHAR})
   </insert>
 
   <insert id="insertSelective" parameterType="com.nicholas.domain.Data">
@@ -109,6 +113,15 @@
       <if test="dataUid != null">
         data_uid,
       </if>
+      <if test="trueSum != null">
+        true_sum,
+      </if>
+      <if test="falseSum != null">
+        false_Sum,
+      </if>
+      <if test="commentSum != null">
+        comment_Sum,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -153,6 +166,15 @@
       <if test="dataUid != null">
         #{dataUid,jdbcType=INTEGER},
       </if>
+      <if test="trueSum != null">
+        #{trueSum,jdbcType=VARCHAR},
+      </if>
+      <if test="falseSum != null">
+        #{falseSum,jdbcType=VARCHAR},
+      </if>
+      <if test="commentSum != null">
+        #{commentSum,jdbcType=VARCHAR},
+      </if>
     </trim>
   </insert>
 
@@ -195,8 +217,17 @@
       <if test="accuracy != null">
         accuracy = #{accuracy,jdbcType=DOUBLE},
       </if>
-      <if test="data_uid != null">
+      <if test="dataUid != null">
         data_uid = #{dataUid,jdbcType=INTEGER},
+      </if>
+      <if test="trueSum != null">
+        true_sum = #{trueSum,jdbcType=VARCHAR},
+      </if>
+      <if test="falseSum != null">
+        false_sum = #{falseSum,jdbcType=VARCHAR},
+      </if>
+      <if test="commentSum != null">
+        comment_sum = #{commentSum,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -216,7 +247,10 @@
       sort = #{sort,jdbcType=INTEGER},
       hot_value = #{hotValue,jdbcType=BIGINT},
       accuracy = #{accuracy,jdbcType=DOUBLE},
-      data_uid = #{dataUid,jdbcType=INTEGER}
+      data_uid = #{dataUid,jdbcType=INTEGER},
+      true_sum = #{trueSum,jdbcType=VARCHAR},
+      false_sum = #{falseSum,jdbcType=VARCHAR},
+      comment_sum = #{commentSum,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

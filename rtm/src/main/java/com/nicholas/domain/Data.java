@@ -35,6 +35,38 @@ public class Data implements Serializable {
 
     private String dataUid;//数据编号
 
+    private Long trueSum;
+
+    private Long falseSum;
+
+    private Long commentSum;
+
+    public Long getTrueSum() {
+        return trueSum;
+    }
+
+    public void setTrueSum(Long trueSum) {
+        this.trueSum = trueSum;
+    }
+
+    public Long getFalseSum() {
+        return falseSum;
+    }
+
+    public void setFalseSum(Long falseSum) {
+        this.falseSum = falseSum;
+    }
+
+    public Long getCommentSum() {
+        return commentSum;
+    }
+
+    public void setCommentSum(Long commentSum) {
+        this.commentSum = commentSum;
+    }
+
+    private static final long serialVersionUID = 1L;
+
     public String getDataUid() {
         return dataUid;
     }
@@ -42,9 +74,6 @@ public class Data implements Serializable {
     public void setDataUid(String dataUid) {
         this.dataUid = dataUid;
     }
-
-    private static final long serialVersionUID = 1L;
-
 
     public Double getAccuracy() {
         return accuracy;

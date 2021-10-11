@@ -88,6 +88,9 @@ public class QueryServiceImpl implements QueryService {
                 dataVo.setHotValue(data.getHotValue());
                 dataVo.setDataUid(data.getDataUid());
                 dataVo.setAccuracy(data.getAccuracy());
+                dataVo.setTrueSum(data.getTrueSum());
+                dataVo.setFalseSum(data.getFalseSum());
+                dataVo.setCommentSum(data.getCommentSum());
                 dataVos.add(dataVo);
             }
             log.info("遍历完成");

@@ -46,6 +46,9 @@ public class DataServiceImpl implements DataService {
             data.setHotValue(0L);
             data.setAccuracy(50.00);
             data.setDataUid(OrderIdRandom.getRandomNum());
+            data.setTrueSum(0l);
+            data.setFalseSum(0l);
+            data.setCommentSum(0L);
             log.info("data赋值完成");
 
             if(levelValue.addValue(userQueryVo.getAccount(), addEmpValue)){

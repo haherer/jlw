@@ -15,6 +15,33 @@ public class DataVo {
     private Long hotValue;
     private String dataUid;
     private Double accuracy;
+    private Long trueSum;
+    private Long falseSum;
+    private Long commentSum;
+
+    public Long getTrueSum() {
+        return trueSum;
+    }
+
+    public void setTrueSum(Long trueSum) {
+        this.trueSum = trueSum;
+    }
+
+    public Long getFalseSum() {
+        return falseSum;
+    }
+
+    public void setFalseSum(Long falseSum) {
+        this.falseSum = falseSum;
+    }
+
+    public Long getCommentSum() {
+        return commentSum;
+    }
+
+    public void setCommentSum(Long commentSum) {
+        this.commentSum = commentSum;
+    }
 
     public Double getAccuracy() {
         return accuracy;
@@ -34,6 +61,9 @@ public class DataVo {
                 ", hotValue=" + hotValue +
                 ", dataUid='" + dataUid + '\'' +
                 ", accuracy=" + accuracy +
+                ", trueSum=" + trueSum +
+                ", falseSum=" + falseSum +
+                ", commentSum=" + commentSum +
                 '}';
     }
 
@@ -41,7 +71,7 @@ public class DataVo {
         this.accuracy = accuracy;
     }
 
-    public DataVo(Integer uid, Date creationTime, BigDecimal longitude, BigDecimal latitude, String poi, String content, String imgUrl, String videoUrl, Long hotValue, String dataUid, Double accuracy) {
+    public DataVo(Integer uid, Date creationTime, BigDecimal longitude, BigDecimal latitude, String poi, String content, String imgUrl, String videoUrl, Long hotValue, String dataUid, Double accuracy, Long trueSum, Long falseSum, Long commentSum) {
         this.uid = uid;
         this.creationTime = creationTime;
         this.longitude = longitude;
@@ -53,6 +83,9 @@ public class DataVo {
         this.hotValue = hotValue;
         this.dataUid = dataUid;
         this.accuracy = accuracy;
+        this.trueSum = trueSum;
+        this.falseSum = falseSum;
+        this.commentSum = commentSum;
     }
 
     public Integer getUid() {
