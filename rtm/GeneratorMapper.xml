@@ -28,7 +28,7 @@
         </javaClientGenerator>
 
         <!--数据库表-->
-        <table tableName="level" domainObjectName="Level"
+        <table tableName="data_count" domainObjectName="DataCount"
                enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
                enableSelectByExample="false" selectByExampleQueryId="false">
             <property name="useActualColumnNames" value="false"/>

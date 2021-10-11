@@ -13,11 +13,15 @@ public enum ErrorCode {
     PHONE_CHECK_ERROR(109,"手机号不符合要求"),
     LOGIN_ERROR(110,"账号或密码错误"),
     LOGIN_FAIL(111,"登录失败"),
-    TOKEN_FAIL(112,"token，请重新登录"),
+    TOKEN_FAIL(112,"token失效，请重新登录"),
     ACCOUNT_CLOSE(113,"账号被冻结"),
     DATA_NULL(114,"无数据"),
     RELEASE_NULL(114,"经纬度、poi、发布内容不可为空"),
-    RELEASE_FAIL(115,"发布失败");
+    RELEASE_FAIL(115,"发布失败"),
+    NOT_ACCOUNT(116,"被操作用户不存在"),
+    NOT_VALUE(116,"操作值错误或不能为空"),
+
+    SYSTEM_ERROR(999,"系统错误，操作失败");
 
 
     private int code;

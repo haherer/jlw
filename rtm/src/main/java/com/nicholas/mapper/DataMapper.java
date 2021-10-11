@@ -17,6 +17,8 @@ public interface DataMapper {
 
     Data selectByPrimaryKey(Integer id);
 
+    Data selectByUid(String id);
+
     List<Data> selectAllData();
 
     int updateByPrimaryKeySelective(Data record);

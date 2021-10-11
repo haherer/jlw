@@ -8,18 +8,28 @@ import com.nicholas.vo.UserQueryVo;
 import com.nicholas.vo.parms.Release;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 
 @Slf4j
 @Service
+@Transactional
 public class DataServiceImpl implements DataService {
 
     @Autowired
     private DataMapper dataMapper;
 
+    @Autowired
+    private LevelValueImpl levelValue;
+
+    @Value("${addEmpValue}")
+    private Long addEmpValue;
+
     @Override
+
     public Integer addData(Release release, UserQueryVo userQueryVo) {
 
             Data data = new Data();
@@ -34,10 +44,13 @@ public class DataServiceImpl implements DataService {
             data.setState(0);
             data.setSort(0);
             data.setHotValue(0L);
-            data.setComment(OrderIdRandom.getRandomNum());
             data.setAccuracy(50.00);
+            data.setDataUid(OrderIdRandom.getRandomNum());
             log.info("data赋值完成");
 
-            return dataMapper.insertSelective(data);
+            if(levelValue.addValue(userQueryVo.getAccount(), addEmpValue)){
+                return dataMapper.insertSelective(data);
+            }
+            return null;
     }
 }

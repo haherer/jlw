@@ -13,7 +13,7 @@ public class DataVo {
     private String imgUrl;
     private String videoUrl;
     private Long hotValue;
-    private String comment;
+    private String dataUid;
     private Double accuracy;
 
     public Double getAccuracy() {
@@ -32,7 +32,7 @@ public class DataVo {
                 ", imgUrl='" + imgUrl + '\'' +
                 ", videoUrl='" + videoUrl + '\'' +
                 ", hotValue=" + hotValue +
-                ", comment='" + comment + '\'' +
+                ", dataUid='" + dataUid + '\'' +
                 ", accuracy=" + accuracy +
                 '}';
     }
@@ -41,7 +41,7 @@ public class DataVo {
         this.accuracy = accuracy;
     }
 
-    public DataVo(Integer uid, Date creationTime, BigDecimal longitude, BigDecimal latitude, String poi, String content, String imgUrl, String videoUrl, Long hotValue, String comment, Double accuracy) {
+    public DataVo(Integer uid, Date creationTime, BigDecimal longitude, BigDecimal latitude, String poi, String content, String imgUrl, String videoUrl, Long hotValue, String dataUid, Double accuracy) {
         this.uid = uid;
         this.creationTime = creationTime;
         this.longitude = longitude;
@@ -51,7 +51,7 @@ public class DataVo {
         this.imgUrl = imgUrl;
         this.videoUrl = videoUrl;
         this.hotValue = hotValue;
-        this.comment = comment;
+        this.dataUid = dataUid;
         this.accuracy = accuracy;
     }
 
@@ -127,12 +127,12 @@ public class DataVo {
         this.hotValue = hotValue;
     }
 
-    public String getComment() {
-        return comment;
+    public String getDataUid() {
+        return dataUid;
     }
 
-    public void setComment(String comment) {
-        this.comment = comment;
+    public void setDataUid(String comment) {
+        this.dataUid = comment;
     }
 
 

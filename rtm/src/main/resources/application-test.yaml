@@ -47,4 +47,6 @@ mybatis:
     map-underscore-to-camel-case: true
 
 #配置报告 debug: true
-#https://www.jianshu.com/p/e88d3f8151db jwt token生成
+
+#发布成功后默认增加的经验值
+addEmpValue: 50

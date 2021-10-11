@@ -37,7 +37,7 @@ public class ReleaseData {
             return Result.fail(ErrorCode.RELEASE_NULL.getCode(), ErrorCode.RELEASE_NULL.getMsg());
         }
         Integer i = dataService.addData(release , userQueryVo);
-        if (i <= 0){
+        if (null == i || i <= 0){
             log.info("发布失败");
             return Result.fail(ErrorCode.RELEASE_FAIL.getCode(), ErrorCode.RELEASE_FAIL.getMsg());
         }

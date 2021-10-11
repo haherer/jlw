@@ -1,9 +1,7 @@
 package com.nicholas.utils;
 
-import io.jsonwebtoken.Jwt;
-import io.jsonwebtoken.JwtBuilder;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.*;
+
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -26,7 +24,7 @@ public class JWTUtils {
         return token;
     }
 
-    public static Map<String,Object> checkToken(String token){
+    public static Map<String,Object> checkToken(String token) {
 
         try {
             Jwt parse = Jwts.parser().setSigningKey(jwtToken).parse(token);

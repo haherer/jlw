@@ -25,6 +25,12 @@
     where level_id = #{levelId,jdbcType=INTEGER}
   </select>
 
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from level
+  </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from level
     where id = #{id,jdbcType=INTEGER}

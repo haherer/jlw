@@ -31,9 +31,17 @@ public class Data implements Serializable {
 
     private Long hotValue;//热度值
 
-    private String comment;//下级评论编号
-
     private Double accuracy;//可信度
+
+    private String dataUid;//数据编号
+
+    public String getDataUid() {
+        return dataUid;
+    }
+
+    public void setDataUid(String dataUid) {
+        this.dataUid = dataUid;
+    }
 
     private static final long serialVersionUID = 1L;
 
@@ -142,11 +150,4 @@ public class Data implements Serializable {
         this.hotValue = hotValue;
     }
 
-    public String getComment() {
-        return comment;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
-    }
 }

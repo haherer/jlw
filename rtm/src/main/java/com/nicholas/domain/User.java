@@ -30,6 +30,8 @@ public class User implements Serializable {
 
     private String name;//用户姓名
 
+    private String nickName;//昵称
+
     public String getNickName() {
         return nickName;
     }
@@ -37,8 +39,6 @@ public class User implements Serializable {
     public void setNickName(String nickName) {
         this.nickName = nickName;
     }
-
-    private String nickName;//昵称
 
     public String getName() {
         return name;

@@ -46,6 +46,7 @@ public class QueryServiceImpl implements QueryService {
             log.info("用户信息未找到");
             return null;
         }
+
         UserQueryVo userQueryVo = new UserQueryVo();
         userQueryVo.setAccount(user.getAccount());
         userQueryVo.setUid(user.getUid());
@@ -85,7 +86,7 @@ public class QueryServiceImpl implements QueryService {
                 dataVo.setImgUrl(data.getImgUrl());
                 dataVo.setVideoUrl(data.getVideoUrl());
                 dataVo.setHotValue(data.getHotValue());
-                dataVo.setComment(data.getComment());
+                dataVo.setDataUid(data.getDataUid());
                 dataVo.setAccuracy(data.getAccuracy());
                 dataVos.add(dataVo);
             }

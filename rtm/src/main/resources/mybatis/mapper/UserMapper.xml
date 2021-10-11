@@ -59,11 +59,11 @@
     insert into user (id, uid, account, 
       password, register_date, lastlogin_date, 
       account_status, phone_number, user_level, 
-      level_value)
+      level_value ,name ,nickname)
     values (#{id,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{account,jdbcType=VARCHAR}, 
       #{password,jdbcType=VARCHAR}, #{registerDate,jdbcType=TIMESTAMP}, #{lastloginDate,jdbcType=TIMESTAMP}, 
       #{accountStatus,jdbcType=INTEGER}, #{phoneNumber,jdbcType=INTEGER}, #{userLevel,jdbcType=INTEGER}, 
-      #{levelValue,jdbcType=BIGINT})
+      #{levelValue,jdbcType=BIGINT} ,#{name,jdbcType=VARCHAR} ,#{nickName,jdbcType=VARCHAR})
   </insert>
 
   <insert id="insertSelective" parameterType="com.nicholas.domain.User">
@@ -99,6 +99,12 @@
       <if test="levelValue != null">
         level_value,
       </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null">
+        #{nickName,jdbcType=VARCHAR},
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -130,6 +136,12 @@
       </if>
       <if test="levelValue != null">
         #{levelValue,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null">
+        #{nickName,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -164,6 +176,12 @@
       <if test="levelValue != null">
         level_value = #{levelValue,jdbcType=BIGINT},
       </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null">
+        #{nickname,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -178,7 +196,9 @@
       account_status = #{accountStatus,jdbcType=INTEGER},
       phone_number = #{phoneNumber,jdbcType=INTEGER},
       user_level = #{userLevel,jdbcType=INTEGER},
-      level_value = #{levelValue,jdbcType=BIGINT}
+      level_value = #{levelValue,jdbcType=BIGINT},
+      name = #{name,jdbcType=VARCHAR},
+      nickname = #{nickName,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

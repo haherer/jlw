@@ -4,13 +4,13 @@
 
   <resultMap id="BaseResultMap" type="com.nicholas.domain.Comment">
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="comment" jdbcType="INTEGER" property="comment" />
+    <result column="data_uid" jdbcType="INTEGER" property="dataUid" />
     <result column="uid" jdbcType="INTEGER" property="uid" />
     <result column="content" jdbcType="VARCHAR" property="content" />
     <result column="creation_time" jdbcType="TIMESTAMP" property="creationTime" />
   </resultMap>
 
-  <sql id="Base_Column_List">id, comment, uid, content, creation_time</sql>
+  <sql id="Base_Column_List">id, content, uid, content, creation_time ,data_uid</sql>
 
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -19,16 +19,24 @@
     where id = #{id,jdbcType=INTEGER}
   </select>
 
+  <select id="selectAllByDataUid" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from comment
+    where data_uid = #{dataUid,jdbcType=VARCHAR}
+  </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from comment
     where id = #{id,jdbcType=INTEGER}
   </delete>
 
   <insert id="insert" parameterType="com.nicholas.domain.Comment">
-    insert into comment (id, comment, uid, 
-      content, creation_time)
-    values (#{id,jdbcType=INTEGER}, #{comment,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, 
-      #{content,jdbcType=VARCHAR}, #{creationTime,jdbcType=TIMESTAMP})
+    insert into comment (id, uid,
+      content, creation_time ,data_uid)
+    values (#{id,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER},
+      #{content,jdbcType=VARCHAR}, #{creationTime,jdbcType=TIMESTAMP}),
+      #{dataUid,jdbcType=VARCHAR})
   </insert>
 
   <insert id="insertSelective" parameterType="com.nicholas.domain.Comment">
@@ -37,8 +45,8 @@
       <if test="id != null">
         id,
       </if>
-      <if test="comment != null">
-        comment,
+      <if test="dataUid != null">
+        data_uid,
       </if>
       <if test="uid != null">
         uid,
@@ -54,8 +62,8 @@
       <if test="id != null">
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="comment != null">
-        #{comment,jdbcType=INTEGER},
+      <if test="dataUid != null">
+        #{dataUid,jdbcType=VARCHAR},
       </if>
       <if test="uid != null">
         #{uid,jdbcType=INTEGER},
@@ -72,8 +80,8 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.nicholas.domain.Comment">
     update comment
     <set>
-      <if test="comment != null">
-        comment = #{comment,jdbcType=INTEGER},
+      <if test="dataUid != null">
+        data_uid = #{comment,jdbcType=VARCHAR},
       </if>
       <if test="uid != null">
         uid = #{uid,jdbcType=INTEGER},
@@ -90,7 +98,7 @@
 
   <update id="updateByPrimaryKey" parameterType="com.nicholas.domain.Comment">
     update comment
-    set comment = #{comment,jdbcType=INTEGER},
+    set data_uid = #{dataUid,jdbcType=VARCHAR},
       uid = #{uid,jdbcType=INTEGER},
       content = #{content,jdbcType=VARCHAR},
       creation_time = #{creationTime,jdbcType=TIMESTAMP}
