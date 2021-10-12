@@ -8,7 +8,9 @@ import com.nicholas.mapper.DataMapper;
 import com.nicholas.mapper.LevelMapper;
 import com.nicholas.service.QueryService;
 import com.nicholas.utils.JWTUtils;
+import com.nicholas.utils.RedisUtils;
 import com.nicholas.vo.DataVo;
+import com.nicholas.vo.Enum.RedisKey;
 import com.nicholas.vo.UserQueryVo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,32 +32,20 @@ public class QueryServiceImpl implements QueryService {
     @Autowired
     private DataMapper dataMapper;
 
+    @Autowired
+    private RedisUtils redisUtils;
+
     @Override
-    public UserQueryVo queryUserByToken(String token) {
+    public Object queryUserByToken(String token) {
 
         Map<String, Object> stringObjectMap = JWTUtils.checkToken(token);
-        if (null == stringObjectMap){
+        String account = (String) redisUtils.hget(RedisKey.TOKEN_KEY.getKey(), token);
+        if (null == stringObjectMap || null == account){
             log.info("token失效");
             return null;
         }
-        Integer userId = (Integer) stringObjectMap.get("userId");
-        log.info("token对应UID为：" + userId);
-        User user = userService.findUid(userId);
-
-        if(null == user){
-            log.info("用户信息未找到");
-            return null;
-        }
-
-        UserQueryVo userQueryVo = new UserQueryVo();
-        userQueryVo.setAccount(user.getAccount());
-        userQueryVo.setUid(user.getUid());
-        userQueryVo.setPhone(user.getPhoneNumber());
-        userQueryVo.setLevelValue(user.getLevelValue());
-        userQueryVo.setUserLevel(queryLevelByLevelId(user.getUserLevel()));
-        userQueryVo.setName(user.getName());
-        userQueryVo.setNickName(user.getNickName());
-        return userQueryVo;
+        log.info("缓存中得到account:" + account);
+        return redisUtils.hmget(account);
     }
 
     @Override

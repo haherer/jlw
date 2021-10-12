@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 public class DataVo {
-    private Integer uid;
+    private Long uid;
     private Date creationTime;
     private BigDecimal longitude;
     private BigDecimal latitude;
@@ -71,7 +71,7 @@ public class DataVo {
         this.accuracy = accuracy;
     }
 
-    public DataVo(Integer uid, Date creationTime, BigDecimal longitude, BigDecimal latitude, String poi, String content, String imgUrl, String videoUrl, Long hotValue, String dataUid, Double accuracy, Long trueSum, Long falseSum, Long commentSum) {
+    public DataVo(Long uid, Date creationTime, BigDecimal longitude, BigDecimal latitude, String poi, String content, String imgUrl, String videoUrl, Long hotValue, String dataUid, Double accuracy, Long trueSum, Long falseSum, Long commentSum) {
         this.uid = uid;
         this.creationTime = creationTime;
         this.longitude = longitude;
@@ -88,11 +88,11 @@ public class DataVo {
         this.commentSum = commentSum;
     }
 
-    public Integer getUid() {
+    public Long getUid() {
         return uid;
     }
 
-    public void setUid(Integer uid) {
+    public void setUid(Long uid) {
         this.uid = uid;
     }
 

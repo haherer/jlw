@@ -9,7 +9,7 @@ public class Comment implements Serializable {
 
     private String dataUid;//评论编号
 
-    private Integer uid;//评论UID
+    private Long uid;//评论UID
 
     private String content;//评论内容
 
@@ -34,11 +34,11 @@ public class Comment implements Serializable {
         this.dataUid = dataUid;
     }
 
-    public Integer getUid() {
+    public Long getUid() {
         return uid;
     }
 
-    public void setUid(Integer uid) {
+    public void setUid(Long uid) {
         this.uid = uid;
     }
 

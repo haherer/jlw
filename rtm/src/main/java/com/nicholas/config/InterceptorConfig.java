@@ -20,7 +20,7 @@ public class InterceptorConfig implements WebMvcConfigurer {
                 .addPathPatterns("/user/login")
                 .excludePathPatterns();
         registry.addInterceptor(new QueryInterceptor())
-                .addPathPatterns("/query/user" , "/release/**" ,"/levelValue/**" ,"/comment/**")
+                .addPathPatterns("/query/**" , "/release/**" ,"/levelValue/**" ,"/comment/**")
                 .excludePathPatterns();
     }
 }

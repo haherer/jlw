@@ -8,6 +8,20 @@ public class Release {
     private String content;
     private String imgUrl;
     private String videoUrl;
+    private String cityId;
+
+    @Override
+    public String toString() {
+        return "Release{" +
+                "longitude=" + longitude +
+                ", latitude=" + latitude +
+                ", poi='" + poi + '\'' +
+                ", content='" + content + '\'' +
+                ", imgUrl='" + imgUrl + '\'' +
+                ", videoUrl='" + videoUrl + '\'' +
+                ", cityId='" + cityId + '\'' +
+                '}';
+    }
 
     public Double getLongitude() {
         return longitude;
@@ -57,13 +71,22 @@ public class Release {
         this.videoUrl = videoUrl;
     }
 
-    public Release(Double longitude, Double latitude, String poi, String content, String imgUrl, String videoUrl) {
+    public String getCityId() {
+        return cityId;
+    }
+
+    public void setCityId(String cityId) {
+        this.cityId = cityId;
+    }
+
+    public Release(Double longitude, Double latitude, String poi, String content, String imgUrl, String videoUrl, String cityId) {
         this.longitude = longitude;
         this.latitude = latitude;
         this.poi = poi;
         this.content = content;
         this.imgUrl = imgUrl;
         this.videoUrl = videoUrl;
+        this.cityId = cityId;
     }
 
     public Release() {

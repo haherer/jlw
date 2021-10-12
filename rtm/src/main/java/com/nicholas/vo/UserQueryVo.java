@@ -6,7 +6,7 @@ import com.nicholas.domain.Level;
 
 public class UserQueryVo {
 
-    private Integer uid;
+    private Long uid;
     private String account;
     private String phone;
     private Level userLevel;
@@ -14,7 +14,7 @@ public class UserQueryVo {
     private String name;
     private String nickName;
 
-    public UserQueryVo(Integer uid, String account, String phone, Level userLevel, Long levelValue, String name, String nickName) {
+    public UserQueryVo(Long uid, String account, String phone, Level userLevel, Long levelValue, String name, String nickName) {
         this.uid = uid;
         this.account = account;
         this.phone = phone;
@@ -56,12 +56,12 @@ public class UserQueryVo {
     public UserQueryVo() {
     }
 
-    public Integer getUid() {
+    public Long getUid() {
         return uid;
     }
 
 
-    public void setUid(Integer uid) {
+    public void setUid(Long uid) {
         this.uid = uid;
     }
 

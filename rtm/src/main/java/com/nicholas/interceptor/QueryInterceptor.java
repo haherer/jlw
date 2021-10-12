@@ -2,7 +2,7 @@ package com.nicholas.interceptor;
 
 
 import com.alibaba.fastjson.JSON;
-import com.nicholas.vo.ErrorCode;
+import com.nicholas.vo.Enum.ErrorCode;
 import com.nicholas.vo.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;

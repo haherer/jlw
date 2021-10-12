@@ -1,7 +1,7 @@
 package com.nicholas.controller;
 
 import com.nicholas.service.impl.MailServiceImpl;
-import com.nicholas.vo.ErrorCode;
+import com.nicholas.vo.Enum.ErrorCode;
 import com.nicholas.vo.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -4,7 +4,7 @@
 
   <resultMap id="BaseResultMap" type="com.nicholas.domain.DataUpDown">
     <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="user_uid" jdbcType="INTEGER" property="userUid" />
+    <result column="user_uid" jdbcType="BIGINT" property="userUid" />
     <result column="up_down" jdbcType="INTEGER" property="upDown" />
     <result column="data_uid" jdbcType="VARCHAR" property="dataUid" />
     <result column="time" jdbcType="TIMESTAMP" property="time" />

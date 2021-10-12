@@ -4,7 +4,8 @@ package com.nicholas.controller;
 import com.nicholas.service.QueryService;
 import com.nicholas.service.impl.LevelValueImpl;
 import com.nicholas.service.impl.UserServiceImpl;
-import com.nicholas.vo.ErrorCode;
+import com.nicholas.utils.RedisUtils;
+import com.nicholas.vo.Enum.ErrorCode;
 import com.nicholas.vo.Result;
 import com.nicholas.vo.UserQueryVo;
 import lombok.extern.slf4j.Slf4j;
@@ -29,18 +30,21 @@ public class LevelValue {
     @Autowired
     private UserServiceImpl userService;
 
+    @Autowired
+    private RedisUtils redisUtils;
+
     //扣除经验值
     @PostMapping("/sub")
     public Result subLevelValue(@RequestHeader("token")String token , String account , Long value){
         log.info("获取token：" + token);
-        UserQueryVo userQueryVo = queryService.queryUserByToken(token);
+        Object obj = queryService.queryUserByToken(token);
 
-        if (null == userQueryVo){
+        if (null == obj){
             log.info("token失效，未找到信息");
             return Result.fail(ErrorCode.TOKEN_FAIL.getCode(), ErrorCode.TOKEN_FAIL.getMsg());
         }
 
-        if (null == userService.findAccount(account)){
+        if (!redisUtils.hasKey(account)){
             log.info("操作用户不存在");
             return Result.fail(ErrorCode.NOT_ACCOUNT.getCode(), ErrorCode.NOT_ACCOUNT.getMsg());
         }
@@ -50,7 +54,7 @@ public class LevelValue {
             return Result.fail(ErrorCode.NOT_VALUE.getCode(), ErrorCode.NOT_ACCOUNT.getMsg());
         }
 
-        log.info("信息获取成功" + userQueryVo);
+        log.info("信息获取成功" + obj);
         if (levelValue.subValue(account, value)){
             return Result.success(null);
         }

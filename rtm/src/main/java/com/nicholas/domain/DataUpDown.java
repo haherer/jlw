@@ -7,7 +7,7 @@ public class DataUpDown implements Serializable {
 
     private Long id;
 
-    private Integer userUid;
+    private Long userUid;
 
     private Integer upDown;
 
@@ -25,11 +25,11 @@ public class DataUpDown implements Serializable {
         this.id = id;
     }
 
-    public Integer getUserUid() {
+    public Long getUserUid() {
         return userUid;
     }
 
-    public void setUserUid(Integer userUid) {
+    public void setUserUid(Long userUid) {
         this.userUid = userUid;
     }
 
@@ -55,5 +55,16 @@ public class DataUpDown implements Serializable {
 
     public void setTime(Date time) {
         this.time = time;
+    }
+
+    @Override
+    public String toString() {
+        return "DataUpDown{" +
+                "id=" + id +
+                ", userUid=" + userUid +
+                ", upDown=" + upDown +
+                ", dataUid='" + dataUid + '\'' +
+                ", time=" + time +
+                '}';
     }
 }

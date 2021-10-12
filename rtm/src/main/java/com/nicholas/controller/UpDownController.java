@@ -3,7 +3,7 @@ package com.nicholas.controller;
 
 import com.nicholas.service.QueryService;
 import com.nicholas.service.UpDownService;
-import com.nicholas.vo.ErrorCode;
+import com.nicholas.vo.Enum.ErrorCode;
 import com.nicholas.vo.Result;
 import com.nicholas.vo.UserQueryVo;
 import lombok.extern.slf4j.Slf4j;
@@ -28,8 +28,9 @@ public class UpDownController {
     public Result up(@RequestHeader("token") String token , String dataUid){
 
         log.info("获取token：" + token);
-        UserQueryVo userQueryVo = queryService.queryUserByToken(token);
-        if (null == userQueryVo){
+        Object obj = queryService.queryUserByToken(token);
+
+        if (null == obj){
             log.info("token失效，未找到信息");
             return Result.fail(ErrorCode.TOKEN_FAIL.getCode(), ErrorCode.TOKEN_FAIL.getMsg());
         }
@@ -49,8 +50,9 @@ public class UpDownController {
     public Result down(@RequestHeader("token") String token , String dataUid){
 
         log.info("获取token：" + token);
-        UserQueryVo userQueryVo = queryService.queryUserByToken(token);
-        if (null == userQueryVo){
+        Object obj = queryService.queryUserByToken(token);
+
+        if (null == obj){
             log.info("token失效，未找到信息");
             return Result.fail(ErrorCode.TOKEN_FAIL.getCode(), ErrorCode.TOKEN_FAIL.getMsg());
         }

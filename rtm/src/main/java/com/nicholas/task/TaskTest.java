@@ -15,12 +15,12 @@ public class TaskTest {
     @Autowired
     private JavaMailSenderImpl javaMailSender;
 
-    //@Scheduled(cron = "0/5 * * * * *") //cron表达式，秒 分 时 日 月 周
+    //@Scheduled(cron = "0/10 * * * * *") //cron表达式，秒 分 时 日 月 周
     public void test(){
             try {
                 String code = "6个8就不发了，这次是:" + (int)((Math.random()*9+1)*100000);
                 SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
-                simpleMailMessage.setSubject("轰炸球球");
+                simpleMailMessage.setSubject("球球我要吃泡面");
                 simpleMailMessage.setText(code);
                 simpleMailMessage.setTo("32714214@qq.com");
                 simpleMailMessage.setFrom("rtm_nicholas@outlook.com");

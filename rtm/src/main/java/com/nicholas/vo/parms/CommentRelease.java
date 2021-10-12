@@ -6,7 +6,7 @@ public class CommentRelease {
 
     private String dataUid;
 
-    private Integer uid;
+    private Long uid;
 
     private String content;
 
@@ -27,11 +27,11 @@ public class CommentRelease {
         this.dataUid = dataUid;
     }
 
-    public Integer getUid() {
+    public Long getUid() {
         return uid;
     }
 
-    public void setUid(Integer uid) {
+    public void setUid(Long uid) {
         this.uid = uid;
     }
 
@@ -43,7 +43,7 @@ public class CommentRelease {
         this.content = content;
     }
 
-    public CommentRelease(String dataUid, Integer uid, String content, Date creationTime) {
+    public CommentRelease(String dataUid, Long uid, String content, Date creationTime) {
         this.dataUid = dataUid;
         this.uid = uid;
         this.content = content;

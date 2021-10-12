@@ -1,10 +1,12 @@
 package com.nicholas.controller;
 
-import com.nicholas.bean.MyBCrypt;
+
 import com.nicholas.domain.User;
 import com.nicholas.service.UserService;
 import com.nicholas.utils.JWTUtils;
-import com.nicholas.vo.ErrorCode;
+import com.nicholas.utils.RedisUtils;
+import com.nicholas.vo.Enum.ErrorCode;
+import com.nicholas.vo.Enum.RedisKey;
 import com.nicholas.vo.Result;
 import com.nicholas.vo.parms.UserLog;
 import com.nicholas.vo.parms.UserReg;
@@ -22,7 +24,7 @@ public class UserController {
     private UserService userService;
 
     @Autowired
-    private MyBCrypt myBCrypt;
+    private RedisUtils redisUtils;
 
     @PostMapping ("/register")
     public Result userRegister(UserReg user){
@@ -59,8 +61,10 @@ public class UserController {
             return Result.fail(ErrorCode.ACCOUNT_CLOSE.getCode(), ErrorCode.ACCOUNT_CLOSE.getMsg());
         }
 
-        String token = JWTUtils.creatToken((long)user.getUid());
+        String token = JWTUtils.creatToken(user.getUid());
         log.info("生成token：" + token);
+        redisUtils.hset(RedisKey.TOKEN_KEY.getKey(), token , user.getAccount() ,60*60);
+        log.info("token存入缓存");
         return Result.success(token);
 
     }

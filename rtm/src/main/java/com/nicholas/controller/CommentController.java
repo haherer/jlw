@@ -2,7 +2,7 @@ package com.nicholas.controller;
 
 import com.nicholas.domain.Comment;
 import com.nicholas.service.CommentService;
-import com.nicholas.vo.ErrorCode;
+import com.nicholas.vo.Enum.ErrorCode;
 import com.nicholas.vo.Result;
 import com.nicholas.vo.parms.CommentRelease;
 import com.nicholas.vo.parms.Page;

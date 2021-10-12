@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface QueryService {
 
-    UserQueryVo queryUserByToken(String token);
+    Object queryUserByToken(String token);
 
     Level queryLevelByLevelId(Integer levelId);
 

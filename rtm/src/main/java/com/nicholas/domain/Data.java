@@ -9,7 +9,7 @@ public class Data implements Serializable {
 
     private Integer id;//自增ID
 
-    private Integer uid;//用户UID
+    private Long uid;//用户UID
 
     private Date creationTime;//创建时间
 
@@ -40,6 +40,16 @@ public class Data implements Serializable {
     private Long falseSum;
 
     private Long commentSum;
+
+    private String cityId;
+
+    public String getCityId() {
+        return cityId;
+    }
+
+    public void setCityId(String cityId) {
+        this.cityId = cityId;
+    }
 
     public Long getTrueSum() {
         return trueSum;
@@ -91,11 +101,11 @@ public class Data implements Serializable {
         this.id = id;
     }
 
-    public Integer getUid() {
+    public Long getUid() {
         return uid;
     }
 
-    public void setUid(Integer uid) {
+    public void setUid(Long uid) {
         this.uid = uid;
     }
 

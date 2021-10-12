@@ -14,9 +14,9 @@ public interface UserService {
 
     Boolean isPhone(String phone);
 
-    User findAccount(String account);
-
-    User findUid(Integer uid);
+//    User findAccount(String account);
+//
+//    User findUid(Integer uid);
 
     User login(UserLog userLog);
 }

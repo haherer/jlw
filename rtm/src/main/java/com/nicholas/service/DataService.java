@@ -4,5 +4,5 @@ import com.nicholas.vo.UserQueryVo;
 import com.nicholas.vo.parms.Release;
 
 public interface DataService {
-    Integer addData(Release release, UserQueryVo userQueryVo);
+    Integer addData(Release release, String account);
 }

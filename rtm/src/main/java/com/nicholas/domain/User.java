@@ -10,7 +10,7 @@ public class User implements Serializable {
 
     private Integer id;//自增ID
 
-    private Integer uid;//用户编号
+    private Long uid;//用户编号
 
     private String account;//登录账号
 
@@ -58,11 +58,11 @@ public class User implements Serializable {
         this.id = id;
     }
 
-    public Integer getUid() {
+    public Long getUid() {
         return uid;
     }
 
-    public void setUid(Integer uid) {
+    public void setUid(Long uid) {
         this.uid = uid;
     }
 

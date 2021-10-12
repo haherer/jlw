@@ -31,6 +31,12 @@ spring:
       max-pool-prepared-statement-per-connection-size: 20
       use-global-data-source-stat: true
       connection-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+#redis配置
+  redis:
+    host: 101.42.92.69
+    port: 6379
+    password: 86113116Qhtjlw
+
 
 #  mvc: 开启内容协商，默认返回XML，请求时通过format=json 设置参数返回json
 #    contentnegotiation:
@@ -50,5 +56,7 @@ mybatis:
 
 #发布成功后默认增加的经验值
 addEmpValue: 50
+
+
 
 

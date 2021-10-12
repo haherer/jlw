@@ -1,4 +1,4 @@
-package com.nicholas.vo;
+package com.nicholas.vo.Enum;
 
 public enum ErrorCode {
 
@@ -20,6 +20,7 @@ public enum ErrorCode {
     RELEASE_FAIL(115,"发布失败"),
     NOT_ACCOUNT(116,"被操作用户不存在"),
     NOT_VALUE(116,"操作值错误或不能为空"),
+    DATA_VALUE_NULL(117,"提交参数不能为空"),
 
     SYSTEM_ERROR(999,"系统错误，操作失败");
 
