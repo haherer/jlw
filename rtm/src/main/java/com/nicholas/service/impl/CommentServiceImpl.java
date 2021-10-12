@@ -2,6 +2,7 @@ package com.nicholas.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.nicholas.domain.Comment;
+import com.nicholas.domain.Data;
 import com.nicholas.mapper.CommentMapper;
 import com.nicholas.mapper.DataMapper;
 import com.nicholas.service.CommentService;
@@ -13,6 +14,7 @@ import com.nicholas.vo.parms.Page;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
@@ -33,6 +35,7 @@ public class CommentServiceImpl implements CommentService {
     private DataMapper dataMapper;
 
     @Override
+    @Transactional
     public Result addComment(String token, CommentRelease commentRelease) {
 
         Map<String, Object> stringObjectMap = JWTUtils.checkToken(token);
@@ -53,13 +56,14 @@ public class CommentServiceImpl implements CommentService {
             log.info("发布者用户信息未找到");
             return null;
         }
-//        Data data = dataMapper.selectByUid(commentRelease.getDataUid());
-//        log.info(data.toString());
-
-        if(null == dataMapper.selectByUid(commentRelease.getDataUid())){
+        Data data = dataMapper.selectByUid(commentRelease.getDataUid());
+        if(null == data){
             log.info("主数据信息未找到");
             return null;
         }
+
+        data.setCommentSum(data.getCommentSum() + 1);
+        dataMapper.updateByPrimaryKeySelective(data);
 
         Comment comment = new Comment();
         comment.setDataUid(commentRelease.getDataUid());
