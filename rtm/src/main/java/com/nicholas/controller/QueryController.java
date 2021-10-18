@@ -5,7 +5,6 @@ import com.nicholas.service.QueryService;
 import com.nicholas.vo.DataVo;
 import com.nicholas.vo.Enum.ErrorCode;
 import com.nicholas.vo.Result;
-import com.nicholas.vo.UserQueryVo;
 import com.nicholas.vo.parms.NearDataList;
 import com.nicholas.vo.parms.Page;
 import com.nicholas.vo.redis.DataPosition;

@@ -7,7 +7,6 @@ import com.nicholas.service.impl.UserServiceImpl;
 import com.nicholas.utils.RedisUtils;
 import com.nicholas.vo.Enum.ErrorCode;
 import com.nicholas.vo.Result;
-import com.nicholas.vo.UserQueryVo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
